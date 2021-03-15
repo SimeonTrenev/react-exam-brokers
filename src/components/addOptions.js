@@ -8,7 +8,8 @@ class AddOptions extends  Component {
         this.state = {
             constructionType: '',
             property: '',
-
+            state: '',
+            neighborhood: '',
         }
     }
 
@@ -18,7 +19,8 @@ class AddOptions extends  Component {
         this.setState({
             constructionType: '',
             property: '',
-
+            state: '',
+            neighborhood: '',
         })
     };
 
@@ -44,6 +46,22 @@ class AddOptions extends  Component {
                     placeholder = 'Вид Имот'
                     name = 'property'
                     value = {this.state.property}
+                    onChange = {this.onChangeValue}
+                    />
+                    <Input 
+                    type = 'text'
+                    label = 'Състояние'
+                    placeholder = 'Състояние'
+                    name = 'state'
+                    value = {this.state.state}
+                    onChange = {this.onChangeValue}
+                    />
+                    <Input 
+                    type = 'text'
+                    label = 'Квартал'
+                    placeholder = 'Квартал'
+                    name = 'neighborhood'
+                    value = {this.state.neighborhood}
                     onChange = {this.onChangeValue}
                     />
                 </form>

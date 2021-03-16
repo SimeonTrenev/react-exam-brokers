@@ -1,6 +1,7 @@
 import AddOptions from './components/addOptions'
 import HomePage from './components/homePage'
 import AddOffer from './components/addOffer'
+import OffersFilter from './components/OffersFilters'
 import './App.css';
 
 function App() {
@@ -9,6 +10,7 @@ function App() {
       <AddOffer />
       <HomePage />
       <AddOptions />
+      <OffersFilter />
     </div>
   );
 }

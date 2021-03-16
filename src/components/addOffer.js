@@ -1,8 +1,9 @@
 import { Component } from 'react';
-import Select from './sharedComponents/Select';
-import Input from './sharedComponents/Input'
-import DateSelector from './sharedComponents/DateSelector'
-import Dropdowns from './sharedComponents/Dropdowns'
+// import Select from './sharedComponents/Select';
+// import Input from './sharedComponents/Input'
+// import DateSelector from './sharedComponents/DateSelector'
+// import Dropdowns from './sharedComponents/Dropdowns'
+import OfferForm from './OfferForm'
 
 class AddOffer extends Component {
     constructor(props){
@@ -11,12 +12,7 @@ class AddOffer extends Component {
 
     render() {
         return(
-            <div>
-                <Select></Select>
-                <Input></Input>
-                <DateSelector />
-                <Dropdowns />
-            </div>
+           <OfferForm />
         )
     }
 }

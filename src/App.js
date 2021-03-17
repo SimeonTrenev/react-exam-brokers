@@ -7,6 +7,7 @@ import ErrorPage from './components/ErrorPage'
 import AboutUs from './components/AboutUs'
 import RegisterForm from './components/RegisterForm'
 import LoginForm from './components/LoginForm'
+import Logout from './components/Logout'
 import './App.css';
 import { Route,  Switch  } from 'react-router-dom';
 
@@ -25,6 +26,7 @@ function App() {
       <Route path='/show-offers' component={OffersFilter} />
       <Route path='/register' component={RegisterForm} />
       <Route path='/login' component={LoginForm} />
+      <Route path='/logout' component={Logout} />
       <Route component={ErrorPage}></Route>
       </Switch>
       

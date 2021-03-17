@@ -5,8 +5,10 @@ import OffersFilter from './components/OffersFilters'
 import Header from './components/Header'
 import ErrorPage from './components/ErrorPage'
 import AboutUs from './components/AboutUs'
+import RegisterForm from './components/RegisterForm'
+import LoginForm from './components/LoginForm'
 import './App.css';
-import { Route, Link, NavLink, Redirect, Switch,  } from 'react-router-dom';
+import { Route,  Switch  } from 'react-router-dom';
 
 function App() {
   return (
@@ -21,6 +23,8 @@ function App() {
         <Route path='/add-offer' component={AddOffer} />
       <Route path='/add-options' component={AddOptions}/>
       <Route path='/show-offers' component={OffersFilter} />
+      <Route path='/register' component={RegisterForm} />
+      <Route path='/login' component={LoginForm} />
       <Route component={ErrorPage}></Route>
       </Switch>
       

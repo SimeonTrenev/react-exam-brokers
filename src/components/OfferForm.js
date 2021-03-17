@@ -3,7 +3,7 @@ import Dropdowns from './sharedComponents/Dropdowns';
 import Input from './sharedComponents/Input';
 import TextArea from './sharedComponents/TextArea';
 import DateSelector from './sharedComponents/DateSelector';
-import moment from 'moment';
+// import moment from 'moment';
 
 class OfferForm extends Component{
     constructor(props){

@@ -1,6 +1,6 @@
 import {  NavLink } from 'react-router-dom';
 
-const Header = () => {
+const Header = (props) => {
     return(
         <nav>
             <ul>

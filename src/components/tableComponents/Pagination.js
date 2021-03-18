@@ -8,7 +8,7 @@ export default function Pagination (props)  {
     prevPage = prevPage < 1 ? 1 : prevPage;
 
     return(
-        <nav aria-labe="Page navigation example">
+        <nav aria-label="Page navigation example">
            <ul className="pagination">
             <li className="page-item">
                 <Link className="page-link nextpage"

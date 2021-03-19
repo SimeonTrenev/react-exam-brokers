@@ -3,11 +3,47 @@ import Dropdowns from "./sharedComponents/Dropdowns";
 import Input from "./sharedComponents/Input";
 import TextArea from "./sharedComponents/TextArea";
 import DateSelector from "./sharedComponents/DateSelector";
+
 // import moment from 'moment';
 
 class OfferForm extends Component {
+  showDeleteBtn() {
+    if (this.props.deleteOffer) {
+      return (
+        <button
+          onClick={(e) => {
+            e.preventDefault();
+            this.props.deleteOffer(this.props.offer._id);
+            // window.location.href='/'
+          }}
+          className="btn btn-danger"
+          style={{ position: "absolute", right: "0" }}
+        >
+          Изтрий
+        </button>
+      );
+    }
+    return null;
+  }
+
+  showEditBtn() {
+    if (this.props.editOffer) {
+      return (
+        <button
+          onClick={(e) => {
+            e.preventDefault();
+            this.props.editOffer(this.props.offer._id)
+          }}
+          className="btn btn-edit"
+        >
+          Промени
+        </button>
+      );
+    }
+    return null
+  }
+
   render() {
-    
     return (
       <div>
         <form>
@@ -129,18 +165,24 @@ class OfferForm extends Component {
             </div>
           </div>
 
-          <div style={{ position: "relative" }}>
-            <button
-              onClick={(e) => {
-                e.preventDefault();
-                // this.props.submitForm(this.state);
-              }}
-              className="btn btn-success"
-              style={{ marginRight: "50px" }}
-            >
-              Запази
-            </button>
-          </div>
+          
+            <div style={{ position: "relative" }}>
+            {!this.props.editOffer && (
+              <button
+                onClick={(e) => {
+                  e.preventDefault();
+                  // this.props.submitForm(this.state);
+                }}
+                className="btn btn-success"
+                style={{ marginRight: "50px" }}
+              >
+                Запази
+              </button>
+               )}
+               {this.showEditBtn()}
+              {this.showDeleteBtn()}
+            </div>
+         
         </form>
       </div>
     );

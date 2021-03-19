@@ -1,13 +1,14 @@
 import { Component } from "react";
 import OfferForm from "./OfferForm";
+import ShowOffers from './ShowOffers'
 import db from "./db/db";
+
 
 class EditOffer extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      db,
       currentOffer: {},
     };
   }
@@ -17,7 +18,7 @@ class EditOffer extends Component {
   }
 
   onChange = (e) => {
-    console.log(this.state.currentOffer);
+    // console.log(this.state.currentOffer);
     let { currentOffer } = this.state;
     currentOffer[e.target.name] = e.target.value;
 
@@ -26,20 +27,46 @@ class EditOffer extends Component {
     });
   };
 
-  searchInDb() {
+  searchInDb = () => {
     const currentOffer = db.filter(
       (x) => x._id === this.props.match.params._id
     )[0];
     this.setState({ currentOffer });
+  };
+
+  // deleteOffer(offer){
+  //   this.props.deleteOffer(offer._id)
+  // }
+
+  dltButton =(_id) => {
+    const neededOffer = db.filter((x) => x._id === _id)[0];
+    let index = db.indexOf(neededOffer);
+    db.splice(index, 1);
+    // console.log(this.props);
+    this.props.history.push("/");
+  }
+
+  editButton = (_id) => {
+   const neededOffer = db.filter(x => x._id === _id)[0];
+   let index = db.indexOf(neededOffer)
+   
+   this.setState({currentOffer: neededOffer})
+   
+  db.splice(index,1,this.state.currentOffer)
+  this.props.history.push('/show-offers/1')
+  console.log(db)
   }
 
   render() {
-    console.log("EditOffer --> ", this.state.currentOffer);
+    
     return (
       <div>
         <OfferForm
           changeFn={this.onChange}
           offer={this.state.currentOffer || {}}
+          deleteOffer={this.dltButton}
+          // deleteOffer={this.dltButton.bind(this)}
+          editOffer={this.editButton}
         />
       </div>
     );

@@ -9,7 +9,15 @@ phoneNumber: '084564566546521111',
 phoneNumber2: '08456456654652',
 phoneNumber3: '4454654546465',
 price : '1',
-_id: '10' }, 
+_id: '10',
+defaultValues : {
+    constructionTypeId : '', 
+    propertyTypeId: '', 
+    state: '', 
+    neighborhoodId: ''
+},
+
+ }, 
 
 {address : 'Krasna Polqna',
 area : '80',
@@ -22,7 +30,14 @@ floor : '5',
 description: 'Lorem 30',
 number : '5',
 price : '52525252',
-_id: '6' },
+_id: '6',
+defaultValues : {
+    constructionTypeId : '', 
+    propertyTypeId: '', 
+    state: '', 
+    neighborhoodId: ''
+},
+},
 
 {address : 'Centur',
 area : '99',
@@ -35,6 +50,13 @@ price : '10000000',
 phoneNumber: '0888888888',
 phoneNumber2: '07777777',
 phoneNumber3: '0666666',
-_id: '5' }]
+_id: '5',
+defaultValues : {
+    constructionTypeId : '', 
+    propertyTypeId: '', 
+    state: '', 
+    neighborhoodId: ''
+},
+ }]
 
 export default offers

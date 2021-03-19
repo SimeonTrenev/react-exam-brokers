@@ -8,13 +8,23 @@ class EditOffer extends Component {
 
     this.state = {
       db,
-      currentOffer: null,
+      currentOffer: {},
     };
   }
 
   componentDidMount() {
     this.searchInDb();
   }
+
+  onChange = (e) => {
+    console.log(this.state.currentOffer);
+    let { currentOffer } = this.state;
+    currentOffer[e.target.name] = e.target.value;
+
+    this.setState((prevState) => {
+      return { ...prevState, currentOffer };
+    });
+  };
 
   searchInDb() {
     const currentOffer = db.filter(
@@ -24,10 +34,13 @@ class EditOffer extends Component {
   }
 
   render() {
-    console.log(this.state.currentOffer);
+    console.log("EditOffer --> ", this.state.currentOffer);
     return (
       <div>
-        <OfferForm offer={this.state.currentOffer} />
+        <OfferForm
+          changeFn={this.onChange}
+          offer={this.state.currentOffer || {}}
+        />
       </div>
     );
   }

@@ -15,7 +15,7 @@ import EditOffer from "./components/EditOffer";
 
 function App() {
   return (
-    <div>
+    <div style={{ padding: "10px", backgroundColor: '#eaeae1' , height: '100vh'}}>
       <Header />
 
       <Switch>

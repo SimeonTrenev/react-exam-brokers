@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Input from "./sharedComponents/Input";
 import TextArea from "./sharedComponents/TextArea";
-import DateSelector from "./sharedComponents/DateSelector";
+
 
 // import moment from 'moment';
 
@@ -16,7 +16,7 @@ class OfferForm extends Component {
             // window.location.href='/'
           }}
           className="btn btn-danger"
-          style={{ position: "absolute", right: "0" }}
+          style={{ position: "absolute", right: "25%", width: '90px' }}
         >
           Изтрий
         </button>
@@ -33,7 +33,7 @@ class OfferForm extends Component {
             e.preventDefault();
             this.props.editOffer(this.props.offer._id);
           }}
-          className="btn btn-edit"
+          className="btn btn-primary"
         >
           Промени
         </button>
@@ -142,21 +142,7 @@ class OfferForm extends Component {
               />
             </div>
 
-            <div className="col-sm-6">
-              <DateSelector
-                label="Последно обаждане"
-                changeFn={this.props.changeFn}
-                //  startDate={moment(this.state.lastCall)}
-              />
-            </div>
-
-            <div className="col-sm-6">
-              <DateSelector
-                label="Следващо обаждане"
-                changeFn={this.props.changeFn}
-                //   startDate={moment(this.state.nextCall)}
-              />
-            </div>
+           
           </div>
 
           <div style={{ position: "relative" }}>

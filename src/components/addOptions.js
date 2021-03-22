@@ -37,32 +37,32 @@ class AddOptions extends  Component {
                     label = 'Вид Строителство'
                     placeholder = 'Вид Строителсво'
                     name = 'constructionType'
-                    value = {this.state.constructionType}
-                    onChange = {this.onChangeValue}
+                    val = {this.state.constructionType}
+                    changeFn = {this.onChangeValue}
                     />
                     <Input 
                     type = 'text'
                     label = 'Вид Имот'
                     placeholder = 'Вид Имот'
                     name = 'property'
-                    value = {this.state.property}
-                    onChange = {this.onChangeValue}
+                    val = {this.state.property}
+                    changeFn = {this.onChangeValue}
                     />
                     <Input 
                     type = 'text'
                     label = 'Състояние'
                     placeholder = 'Състояние'
                     name = 'state'
-                    value = {this.state.state}
-                    onChange = {this.onChangeValue}
+                    val = {this.state.state}
+                    changeFn = {this.onChangeValue}
                     />
                     <Input 
                     type = 'text'
                     label = 'Квартал'
                     placeholder = 'Квартал'
                     name = 'neighborhood'
-                    value = {this.state.neighborhood}
-                    onChange = {this.onChangeValue}
+                    val = {this.state.neighborhood}
+                    changeFn = {this.onChangeValue}
                     />
                 </form>
                 <button onClick={this.save}>Запази</button>

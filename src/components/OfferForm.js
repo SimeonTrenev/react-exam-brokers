@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Dropdowns from "./sharedComponents/Dropdowns";
 import Input from "./sharedComponents/Input";
 import TextArea from "./sharedComponents/TextArea";
 import DateSelector from "./sharedComponents/DateSelector";
@@ -32,7 +31,7 @@ class OfferForm extends Component {
         <button
           onClick={(e) => {
             e.preventDefault();
-            this.props.editOffer(this.props.offer._id)
+            this.props.editOffer(this.props.offer._id);
           }}
           className="btn btn-edit"
         >
@@ -40,7 +39,7 @@ class OfferForm extends Component {
         </button>
       );
     }
-    return null
+    return null;
   }
 
   render() {
@@ -48,12 +47,7 @@ class OfferForm extends Component {
       <div>
         <form>
           <div className="row">
-            <div className="col-md-12">
-              <Dropdowns
-                defaultValues={this.props.offer.defaultValues}
-                changeHandler={this.props.changeFn}
-              />
-            </div>
+            <div className="col-md-12"></div>
             <div className="col-sm-4">
               <Input
                 name="number"
@@ -165,8 +159,7 @@ class OfferForm extends Component {
             </div>
           </div>
 
-          
-            <div style={{ position: "relative" }}>
+          <div style={{ position: "relative" }}>
             {!this.props.editOffer && (
               <button
                 onClick={(e) => {
@@ -178,11 +171,10 @@ class OfferForm extends Component {
               >
                 Запази
               </button>
-               )}
-               {this.showEditBtn()}
-              {this.showDeleteBtn()}
-            </div>
-         
+            )}
+            {this.showEditBtn()}
+            {this.showDeleteBtn()}
+          </div>
         </form>
       </div>
     );

@@ -6,36 +6,58 @@ import React, { Component } from "react";
 
 import Pagination from "./tableComponents/Pagination";
 import TableOffers from "./tableComponents/TableOffers";
-import OffersFilters from "./OffersFilters";
+import SearchButton from "./SearchButton";
 import db from "./db/db";
 
 class ShowOffers extends Component {
   constructor(props) {
     super(props);
-    console.log(this.props);
+    // console.log(this.props);
     this.state = {
-      offers: [
-        {
-          address: db[0].address,
-          area: db[0].area,
-          constructionTypeId: { value: "2" },
-          floor: db[0].floor,
-          number: db[0].number,
-          price: db[0].price,
-          propertyTypeId: { value: db[0].defaultValues.propertyTypeId },
-          state: { value: db[0].defaultValues.state },
-          neighborhoodId: { value: "3" },
-          _id: "10",
-        },
-      ],
+      offers: db,
+      searchByNeighborhood: "",
     };
   }
+
+  onChangeValueSearch = (e) => {
+    let currentSearch = e.target.value;
+    this.setState({ searchByNeighborhood: currentSearch });
+  };
+
+  onSearch = (e) => {
+    e.preventDefault();
+
+    const currentNeighborhood = db.filter(
+      (x) =>
+        x.neighborhood.toLowerCase() ===
+        this.state.searchByNeighborhood.toLowerCase()
+    );
+
+    if(!this.state.searchByNeighborhood){
+      this.setState({offers: db})
+      return;
+    }
+
+    this.setState({ offers: currentNeighborhood });
+
+    this.setState({ searchByNeighborhood: "" });
+    // console.log("click search !!!");
+    // console.log(this.state.searchByNeighborhood);
+  };
 
   render() {
     return (
       <div>
-        <OffersFilters />
-        <TableOffers offers={db} />
+        <SearchButton
+          type="text"
+          label="Квартал"
+          placeholder="Квартал"
+          name="neighborhood"
+          val={this.state.searchByNeighborhood}
+          onChange={this.onChangeValueSearch}
+          onSearch={this.onSearch}
+        />
+        <TableOffers offers={this.state.offers} />
         <Pagination />
       </div>
     );

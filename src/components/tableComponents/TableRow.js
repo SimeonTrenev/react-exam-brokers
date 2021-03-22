@@ -1,28 +1,27 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-
 const TableRow = (props) => {
   const {
     address,
     area,
-    constructionTypeId,
+    construction,
     floor,
     number,
     price,
-    propertyTypeId,
+    property,
     state,
-    neighborhoodId,
+    neighborhood,
     _id,
   } = props.offer;
 
   return (
     <tr>
-      <td>{propertyTypeId.value}</td>
-      <td>{state.value}</td>
-      <td>{constructionTypeId.value}</td>
+      <td>{property}</td>
+      <td>{state}</td>
+      <td>{construction}</td>
       <td>{number}</td>
-      <td>{neighborhoodId.value}</td>
+      <td>{neighborhood}</td>
       <td>{area}</td>
       <td>{price}</td>
       <td>{address}</td>

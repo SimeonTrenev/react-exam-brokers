@@ -1,8 +1,6 @@
 import { Component } from "react";
 import OfferForm from "./OfferForm";
-import ShowOffers from './ShowOffers'
 import db from "./db/db";
-
 
 class EditOffer extends Component {
   constructor(props) {
@@ -38,27 +36,26 @@ class EditOffer extends Component {
   //   this.props.deleteOffer(offer._id)
   // }
 
-  dltButton =(_id) => {
+  dltButton = (_id) => {
     const neededOffer = db.filter((x) => x._id === _id)[0];
     let index = db.indexOf(neededOffer);
     db.splice(index, 1);
     // console.log(this.props);
     this.props.history.push("/");
-  }
+  };
 
   editButton = (_id) => {
-   const neededOffer = db.filter(x => x._id === _id)[0];
-   let index = db.indexOf(neededOffer)
-   
-   this.setState({currentOffer: neededOffer})
-   
-  db.splice(index,1,this.state.currentOffer)
-  this.props.history.push('/show-offers/1')
-  console.log(db)
-  }
+    const neededOffer = db.filter((x) => x._id === _id)[0];
+    let index = db.indexOf(neededOffer);
+
+    this.setState({ currentOffer: neededOffer });
+
+    db.splice(index, 1, this.state.currentOffer);
+    this.props.history.push("/show-offers/1");
+    // console.log(db);
+  };
 
   render() {
-    
     return (
       <div>
         <OfferForm

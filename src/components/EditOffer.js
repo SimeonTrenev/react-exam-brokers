@@ -1,6 +1,7 @@
 import { Component } from "react";
 import OfferForm from "./OfferForm";
 import db from "./db/db";
+import axios from "axios";
 
 class EditOffer extends Component {
   constructor(props) {
@@ -46,12 +47,23 @@ class EditOffer extends Component {
 
   editButton = (_id) => {
     const neededOffer = db.filter((x) => x._id === _id)[0];
-    let index = db.indexOf(neededOffer);
 
-    this.setState({ currentOffer: neededOffer });
+    delete neededOffer._id;
 
-    db.splice(index, 1, this.state.currentOffer);
-    this.props.history.push("/show-offers/1");
+    axios
+      .post("http://localhost:9000/add-offer", neededOffer, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      .then((response) => console.log(response.data));
+
+    // let index = db.indexOf(neededOffer);
+
+    // this.setState({ currentOffer: neededOffer });
+
+    // db.splice(index, 1, this.state.currentOffer);
+    // this.props.history.push("/show-offers/1");
     // console.log(db);
   };
 

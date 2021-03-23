@@ -13,6 +13,9 @@ import "./App.css";
 import { Route, Switch } from "react-router-dom";
 import EditOffer from "./components/EditOffer";
 
+
+
+
 function App() {
   return (
     <div style={{ padding: "10px", backgroundColor: '#eaeae1' , height: '100vh'}}>
@@ -32,6 +35,7 @@ function App() {
         <Route path="/logout" component={Logout} />
         <Route component={ErrorPage}></Route>
       </Switch>
+      
     </div>
   );
 }

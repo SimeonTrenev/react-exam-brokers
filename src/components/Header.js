@@ -14,7 +14,7 @@ const Header = (props) => {
     //        <li><NavLink to = '/logout' exact>Logout</NavLink></li>
     //     </ul>
     // </nav>
-    <nav style={{backgroundColor: '#ffe6e6'}} class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav style={{backgroundColor: '#ffe6e6'}} className="navbar navbar-expand-lg navbar-light bg-light">
       <NavLink className="navbar-brand" to="/" exact>
         Home
       </NavLink>

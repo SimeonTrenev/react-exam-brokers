@@ -3,7 +3,7 @@ import React, { Component } from "react";
 // import TableOffers from "./tableComponents/TableOffers";
 // import Pagination from './tableComponents/Pagination'
 // import qs from "querystring";
-
+import axios from 'axios'
 import Pagination from "./tableComponents/Pagination";
 import TableOffers from "./tableComponents/TableOffers";
 import SearchButton from "./SearchButton";
@@ -17,6 +17,11 @@ class ShowOffers extends Component {
       offers: db,
       searchByNeighborhood: "",
     };
+  }
+
+  componentDidMount(){
+    axios.get('http://localhost:9000/offers')
+        .then(response => console.log(response))
   }
 
   onChangeValueSearch = (e) => {

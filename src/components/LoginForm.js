@@ -22,7 +22,7 @@ function LoginForm(props) {
   };
 
   const redirectToRegister = () => {
-    console.log("redirectToRegister");
+    props.history.push('/register'); 
   };
   return (
     <div className="card col-12 col-lg-4 login-card mt-2 hv-center">

@@ -3,6 +3,7 @@ import { Component } from "react";
 // import Input from './sharedComponents/Input'
 // import DateSelector from './sharedComponents/DateSelector'
 import OfferForm from "./OfferForm";
+import axios from 'axios'
 
 class AddOffer extends Component {
   constructor(props) {
@@ -10,12 +11,22 @@ class AddOffer extends Component {
     this.state = {};
   }
 
+  componentDidMount(){
+    console.log('123')
+  }
+
   onChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   };
 
+  btnSuccess = (offer) => {
+    axios.post('http://localhost:9000/add-offer', offer)
+        .then(response => console.log(response.data))
+    
+  }
+ 
   render() {
-    return <OfferForm changeFn={this.onChange} offer={this.state} />;
+    return <OfferForm changeFn={this.onChange} offer={this.state} btn={this.btnSuccess}/>;
   }
 }
 

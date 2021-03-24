@@ -9,6 +9,7 @@ const offerSchema = new Schema({
   phoneNumber2: String,
   phoneNumber3: String,
   price: String,
+  owner: String,
   address: String,
   info: String,
   floor: Number,

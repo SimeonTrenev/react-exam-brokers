@@ -4,6 +4,8 @@ const mongoPath = "mongodb://localhost:27017/finalExam";
 const bodyParser = require("body-parser");
 const cors = require("cors");
 require("./models/Offers");
+require('./models/ConstructionTypes')
+require('./models/User')
 
 let app = express();
 

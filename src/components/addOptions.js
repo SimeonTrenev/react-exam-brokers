@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import Input from './sharedComponents/Input'
+import axios from 'axios'
 
 class AddOptions extends  Component {
     constructor(props){
@@ -22,7 +23,11 @@ class AddOptions extends  Component {
             state: '',
             neighborhood: '',
         })
+        axios.post('http://localhost:9000/add-types', this.state)
+        .then(ressponse => console.log(Response))
     };
+
+  
 
     onChangeValue = (e) => {
         this.setState({ [e.target.name] : e.target.value })

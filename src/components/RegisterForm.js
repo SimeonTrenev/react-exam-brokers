@@ -17,35 +17,7 @@ function RegistrationForm(props) {
             [id] : value
         }))
     }
-    const sendDetailsToServer = () => {
-        if(state.email.length && state.password.length) {
-            props.showError(null);
-            const payload={
-                "email":state.email,
-                "password":state.password,
-            }
-            axios.post('API_BASE_URL'+'/user/register', payload)
-                .then(function (response) {
-                    if(response.status === 200){
-                        setState(prevState => ({
-                            ...prevState,
-                            'successMessage' : 'Registration successful. Redirecting to home page..'
-                        }))
-                        localStorage.setItem('ACCESS_TOKEN_NAME',response.data.token);
-                        redirectToHome();
-                        props.showError(null)
-                    } else{
-                        props.showError("Some error ocurred");
-                    }
-                })
-                .catch(function (error) {
-                    console.log(error);
-                });    
-        } else {
-            props.showError('Please enter valid username and password')    
-        }
-        
-    }
+    
     const redirectToHome = () => {
         
         props.history.push('/home');
@@ -56,10 +28,14 @@ function RegistrationForm(props) {
     const handleSubmitClick = (e) => {
         e.preventDefault();
         if(state.password === state.confirmPassword) {
-            sendDetailsToServer()    
-        } else {
-            props.showError('Passwords do not match');
-        }
+            // sendDetailsToServer()
+            axios.post('http://localhost:9000/register', state)
+            .then(response => console.log(response))
+            redirectToLogin()
+        }else{
+            props.history.push('/register')
+        } 
+        
     }
     return(
         <div className="card col-12 col-lg-4 login-card mt-2 hv-center">

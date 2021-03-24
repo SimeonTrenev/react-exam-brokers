@@ -144,12 +144,13 @@ class OfferForm extends Component {
 
            
           </div>
-
+          
           <div style={{ position: "relative" }}>
             {!this.props.editOffer && (
               <button
                 onClick={(e) => {
                   e.preventDefault();
+                  this.props.btn(this.props.offer)
                   // this.props.submitForm(this.state);
                 }}
                 className="btn btn-success"

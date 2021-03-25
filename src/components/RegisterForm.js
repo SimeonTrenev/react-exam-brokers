@@ -8,7 +8,6 @@ function RegistrationForm(props) {
         email : "",
         password : "",
         confirmPassword: "",
-        successMessage: null
     })
     const handleChange = (e) => {
         const {id , value} = e.target   
@@ -31,6 +30,7 @@ function RegistrationForm(props) {
             // sendDetailsToServer()
             axios.post('http://localhost:9000/register', state)
             .then(response => console.log(response))
+            .catch(err => console.log(err))
             redirectToLogin()
         }else{
             props.history.push('/register')

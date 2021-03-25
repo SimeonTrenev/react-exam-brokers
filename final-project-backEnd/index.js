@@ -7,12 +7,17 @@ require("./models/Offers");
 require('./models/ConstructionTypes')
 require('./models/User')
 
+const cookieParser = require('cookie-parser')
+const auth = require('./auth')
+
 let app = express();
 
 app.use(cors());
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(cookieParser());
+app.use(auth)
 
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
@@ -46,3 +51,4 @@ const dbConnectionOptions = {
 mongoose.connect(mongoPath, dbConnectionOptions, () => {
   console.log("connected");
 });
+

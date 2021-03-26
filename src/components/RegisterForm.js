@@ -28,7 +28,7 @@ function RegistrationForm(props) {
         e.preventDefault();
         if(state.password === state.confirmPassword) {
             // sendDetailsToServer()
-            axios.post('http://localhost:9000/register', state)
+            axios.post('/register', state)
             .then(response => console.log(response))
             .catch(err => console.log(err))
             redirectToLogin()

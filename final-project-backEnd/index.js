@@ -4,11 +4,11 @@ const mongoPath = "mongodb://localhost:27017/finalExam";
 const bodyParser = require("body-parser");
 const cors = require("cors");
 require("./models/Offers");
-require('./models/ConstructionTypes')
-require('./models/User')
+require("./models/ConstructionTypes");
+require("./models/User");
 
-const cookieParser = require('cookie-parser')
-const auth = require('./auth')
+const cookieParser = require("cookie-parser");
+const auth = require("./auth");
 
 let app = express();
 
@@ -32,6 +32,19 @@ app.use((req, res, next) => {
   console.log(req.path);
   next();
 });
+
+require("./routes/test")(app);
+
+app.post("/register", (req, res, next) => {
+  console.log("asd");
+  res.send("testa");
+});
+app.post("/add-offer", (req, res, next) => {
+  console.log(req.body);
+  // res.send(req.body);
+  res.send(req.body);
+});
+
 require("./routes/index")(app);
 const port = 9000;
 
@@ -51,4 +64,3 @@ const dbConnectionOptions = {
 mongoose.connect(mongoPath, dbConnectionOptions, () => {
   console.log("connected");
 });
-

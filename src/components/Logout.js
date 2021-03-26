@@ -1,10 +1,18 @@
 import { Component } from 'react';
+import axios from 'axios';
 
 class Logout extends Component{
 
+    constructor(props){
+        super(props)
+    }
+
     logout(){
-        localStorage.clear();
-        window.location.href='/';
+        axios.get('/clearCookie')
+            .then(response => console.log(response))
+            .catch(err => console.log(err));
+            this.props.history.push('/')
+        // window.location.href='/';
     }
 
     render() {

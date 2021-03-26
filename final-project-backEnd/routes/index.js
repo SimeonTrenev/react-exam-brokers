@@ -69,7 +69,6 @@ module.exports = (app) => {
         res.cookie(COOKIE_NAME, token, {
           maxAge: 9000000000,
           httpOnly: true,
-          secure: true,
         });
         // res.append('Set-Cookie', COOKIE_NAME + token + ';');
         res.json(token);

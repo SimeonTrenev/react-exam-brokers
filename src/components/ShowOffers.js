@@ -19,8 +19,11 @@ class ShowOffers extends Component {
     };
   }
 
+
   componentDidMount(){
-    axios.get('http://localhost:9000/offers')
+  
+
+    axios.get('/offers')
         .then(response => console.log(response))
   }
 

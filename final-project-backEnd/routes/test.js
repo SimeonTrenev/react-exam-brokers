@@ -29,14 +29,14 @@ function test(app) {
       .then((token) => {
         //   res.cookie(COOKIE_NAME, token, { httpOnly: true });
         // next()
-        res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
-        res.cookie(COOKIE_NAME, token, {
-          maxAge: 9000000000,
-          httpOnly: true,
-          secure: true,
-        });
+        // res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
+        // res.cookie(COOKIE_NAME, token, {
+        //   maxAge: 9000000000,
+        //   httpOnly: true,
+        // });
+        res.send({"token": token})
         // res.append('Set-Cookie', COOKIE_NAME + token + ';');
-        res.json(token);
+        // res.json(token);
         // next()
       })
       .catch((err) => {

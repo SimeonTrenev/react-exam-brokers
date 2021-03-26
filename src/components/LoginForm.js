@@ -7,7 +7,6 @@ function LoginForm(props) {
   const [state, setState] = useState({
     email: "",
     password: "",
-    
   });
   const handleChange = (e) => {
     const { id, value } = e.target;
@@ -18,41 +17,41 @@ function LoginForm(props) {
   };
 
   const redirectToRegister = () => {
-    props.history.push('/register'); 
+    // props.history.push("/register");
   };
 
   const redirectToHome = () => {
-    props.history.push('/')
-    return
-  }
+    // props.history.push("/");
+    return;
+  };
 
   const loginFunction = (e) => {
-    const { email, password } = state
-    if(password.length >= 5 && email.length >= 5){
-      axios.post('/login', {email, password})
-          .then(response => console.log(response.data))
-          .catch(err => console.log(err))
-          
-          
-         
-        redirectToHome()
-      
-    }else{
+    const { email, password } = state;
+    if (password.length >= 5 && email.length >= 5) {
+      axios
+        .post("/login", { email, password })
+        .then((response) => {
+          window.sessionStorage.setItem("token", response.data.token);
+          console.log(response.data.token);
+          props.updateSessinStatus(!!response.data.token);
+        })
+        .catch((err) => console.log(err));
+
+      redirectToHome();
+    } else {
       redirectToRegister();
     }
 
     // axios.get('http://localhost:3000/login')
     //     .then(response => console.log(response.data))
     //     .catch(err => console.log(err))
-  }
+  };
 
   const handleSubmitClick = (e) => {
     e.preventDefault();
     loginFunction();
-    
   };
 
-  
   return (
     <div className="card col-12 col-lg-4 login-card mt-2 hv-center">
       <form>

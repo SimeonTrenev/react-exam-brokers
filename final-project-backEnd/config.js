@@ -1,7 +1,7 @@
 const config = {
-    SALT_ROUNDS : 10,
-    SECRET: 'SecretSecret',
-    COOKIE_NAME: 'Token'
-}
+  SALT_ROUNDS: 10,
+  SECRET: "SecretSecret",
+  COOKIE_NAME: "test",
+};
 
-module.exports = config
+module.exports = config;

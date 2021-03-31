@@ -9,17 +9,18 @@ class OfferForm extends Component {
   showDeleteBtn() {
     if (this.props.deleteOffer) {
       return (
+        
         <button
           onClick={(e) => {
             e.preventDefault();
             this.props.deleteOffer(this.props.offer._id);
-            // window.location.href='/'
           }}
           className="btn btn-danger"
-          style={{ position: "absolute", right: "25%", width: '90px' }}
+          style={{ position: "absolute", right: "25%", width: "90px" }}
         >
           Изтрий
         </button>
+        
       );
     }
     return null;
@@ -114,9 +115,48 @@ class OfferForm extends Component {
                 val={this.props.offer.owner}
                 changeFn={this.props.changeFn}
               />
+
+              
             </div>
 
+            
+
             <div className="col-sm-4">
+            <Input
+              type="text"
+              label="Вид Строителство"
+              placeholder="Вид Строителсво"
+              name="construction"
+              val={this.props.offer.construction}
+              changeFn={this.props.changeFn}
+            />
+
+            <Input
+              type="text"
+              label="Вид Имот"
+              placeholder="Вид Имот"
+              name="property"
+              val={this.props.offer.property}
+              changeFn={this.props.changeFn}
+            />
+
+            <Input
+              type="text"
+              label="Състояние"
+              placeholder="Състояние"
+              name="state"
+              val={this.props.offer.state}
+              changeFn={this.props.changeFn}
+            />
+
+            <Input
+              type="text"
+              label="Квартал"
+              placeholder="Квартал"
+              name="neighborhood"
+              val={this.props.offer.neighborhood}
+              changeFn={this.props.changeFn}
+            />
               <Input
                 name="phoneNumber"
                 label="Телефон"
@@ -141,16 +181,14 @@ class OfferForm extends Component {
                 changeFn={this.props.changeFn}
               />
             </div>
-
-           
           </div>
-          
+
           <div style={{ position: "relative" }}>
             {!this.props.editOffer && (
               <button
                 onClick={(e) => {
                   e.preventDefault();
-                  this.props.btn(this.props.offer)
+                  this.props.btn(this.props.offer);
                   // this.props.submitForm(this.state);
                 }}
                 className="btn btn-success"

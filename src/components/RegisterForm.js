@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import axios from 'axios';
-
+import InputError from './sharedComponents/InputError'
 
 
 function RegistrationForm(props) {
@@ -9,6 +9,9 @@ function RegistrationForm(props) {
         password : "",
         confirmPassword: "",
     })
+
+    const [errorMessage, setErrorMessage] = useState('')
+
     const handleChange = (e) => {
         const {id , value} = e.target   
         setState(prevState => ({
@@ -26,14 +29,18 @@ function RegistrationForm(props) {
     }
     const handleSubmitClick = (e) => {
         e.preventDefault();
-        if(state.password === state.confirmPassword) {
+        if(state.password === state.confirmPassword && state.password.length >= 5) {
             // sendDetailsToServer()
             axios.post('/register', state)
             .then(response => console.log(response))
             .catch(err => console.log(err))
             redirectToLogin()
         }else{
-            props.history.push('/register')
+            if(state.password.length < 5){
+                setErrorMessage('Password is too short!')
+            }
+            <InputError>{errorMessage}</InputError>
+            return
         } 
         
     }

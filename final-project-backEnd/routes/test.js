@@ -54,9 +54,32 @@ function test(app) {
     });
   });
 
+
+
+  app.post('/delete', (req, res, next) => {
+      let data = req.body
+      console.log(data)
+    return  Offer.deleteOne({_id: data._id})
+                .then(response => res.send(response))
+        
+  })
+
+  app.post('/edit-offer', (req, res, next) => {
+      let data = req.body;
+
+      return Offer.updateOne({_id: data._id}, data)
+                .then(response => res.send(response))
+  })
+
   app.get('/clearCookie', (req, res, next) => {
       res.clearCookie(COOKIE_NAME)
       next();
+  })
+
+  app.get('/allOffers', (req, res, next) => {
+  return Offer.find({})
+            .then(response => res.send(response))
+            
   })
 }
 

@@ -23,7 +23,7 @@ class AddOptions extends  Component {
             state: '',
             neighborhood: '',
         })
-        axios.post('http://localhost:9000/add-types', this.state)
+        axios.post('/add-types', this.state)
         .then(ressponse => console.log(Response))
     };
 

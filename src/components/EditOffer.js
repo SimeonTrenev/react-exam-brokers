@@ -1,6 +1,6 @@
 import { Component } from "react";
 import OfferForm from "./OfferForm";
-import db from "./db/db";
+// import db from "./db/db";
 import axios from "axios";
 
 class EditOffer extends Component {
@@ -8,55 +8,94 @@ class EditOffer extends Component {
     super(props);
 
     this.state = {
-      currentOffer: {},
+      currentOffer: {}
     };
   }
+ 
 
   componentDidMount() {
+   
+
     this.searchInDb();
   }
 
+
+
   onChange = (e) => {
     // console.log(this.state.currentOffer);
+    
     let { currentOffer } = this.state;
     currentOffer[e.target.name] = e.target.value;
+    
 
     this.setState((prevState) => {
+      
       return { ...prevState, currentOffer };
     });
   };
 
-  searchInDb = () => {
-    const currentOffer = db.filter(
+
+
+  searchInDb = async function() {
+    let db = []; 
+    await axios.get('/allOffers')
+     .then(response => db.push(response.data))
+     .catch(err => console.log(err))
+    //  console.log(db)
+
+    const currentOffer = await db[0].filter(
       (x) => x._id === this.props.match.params._id
     )[0];
     this.setState({ currentOffer });
+
+    // console.log(this.state.currentOffer)
+    
   };
 
   // deleteOffer(offer){
   //   this.props.deleteOffer(offer._id)
   // }
 
-  dltButton = (_id) => {
-    const neededOffer = db.filter((x) => x._id === _id)[0];
-    let index = db.indexOf(neededOffer);
-    db.splice(index, 1);
+  dltButton = async function (_id){
+    const db = [];
+    await axios.get('/allOffers')
+     .then(response => db.push(response.data))
+     .catch(err => console.log(err))
+
+
+    const neededOffer = await db[0].filter((x) => x._id === _id)[0];
+    
+    
+   await axios.post('/delete', neededOffer)
+          .then(response => this.props.history.push('/show-offers/1'))
+          .catch(err => console.log(err))
+          // this.props.history.push('/show-offers/1')
+
     // console.log(this.props);
-    this.props.history.push("/");
+    // this.props.history.push("/");
   };
 
-  editButton = (_id) => {
-    const neededOffer = db.filter((x) => x._id === _id)[0];
+  editButton = async function (_id) {
+    const db = [];
+    await axios.get('/allOffers')
+     .then(response => db.push(response.data))
+     .catch(err => console.log(err))
+     
 
-    delete neededOffer._id;
 
-    axios
-      .post("http://localhost:9000/add-offer", neededOffer, {
+    // const neededOffer = await db[0].filter((x) => x._id === _id)[0];
+    
+    
+    // delete neededOffer._id;
+   
+   await axios
+      .post("/edit-offer", this.state.currentOffer, {
         headers: {
           "Content-Type": "application/json",
         },
       })
-      .then((response) => console.log(response.data));
+      .then((response) => this.props.history.push('/show-offers/1'))
+      .catch(err => console.log(err))
 
     // let index = db.indexOf(neededOffer);
 
@@ -73,9 +112,9 @@ class EditOffer extends Component {
         <OfferForm
           changeFn={this.onChange}
           offer={this.state.currentOffer || {}}
-          deleteOffer={this.dltButton}
+          deleteOffer={this.dltButton.bind(this)}
           // deleteOffer={this.dltButton.bind(this)}
-          editOffer={this.editButton}
+          editOffer={this.editButton.bind(this)}
         />
       </div>
     );

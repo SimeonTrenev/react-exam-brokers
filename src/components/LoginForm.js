@@ -2,12 +2,17 @@ import React, { useState } from "react";
 import axios from "axios";
 // import './LoginForm.css';
 // import { API_BASE_URL, ACCESS_TOKEN_NAME } from "../../constants/apiConstants";
+import { useHistory } from 'react-router-dom'
+import InputError from './sharedComponents/InputError'
 
 function LoginForm(props) {
   const [state, setState] = useState({
     email: "",
     password: "",
   });
+
+  const history = useHistory();
+
   const handleChange = (e) => {
     const { id, value } = e.target;
     setState((prevState) => ({
@@ -16,12 +21,15 @@ function LoginForm(props) {
     }));
   };
 
+  const [errorMessage, setErrorMessage] = useState('')
+
   const redirectToRegister = () => {
     // props.history.push("/register");
   };
 
   const redirectToHome = () => {
-    // props.history.push("/");
+    // window.location.href='/' // ??????
+    history.push('/')
     return;
   };
 
@@ -32,13 +40,17 @@ function LoginForm(props) {
         .post("/login", { email, password })
         .then((response) => {
           window.sessionStorage.setItem("token", response.data.token);
-          console.log(response.data.token);
+          // console.log(response.data.token);
           props.updateSessinStatus(!!response.data.token);
         })
         .catch((err) => console.log(err));
 
       redirectToHome();
     } else {
+      if(password.length < 5){
+        setErrorMessage('Password is too short!')
+      }
+      <InputError>{errorMessage}</InputError>
       redirectToRegister();
     }
 

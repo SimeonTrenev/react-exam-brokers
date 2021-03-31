@@ -7,24 +7,31 @@ import axios from 'axios'
 import Pagination from "./tableComponents/Pagination";
 import TableOffers from "./tableComponents/TableOffers";
 import SearchButton from "./SearchButton";
-import db from "./db/db";
+// import db from "./db/db";
 
 class ShowOffers extends Component {
   constructor(props) {
     super(props);
     // console.log(this.props);
     this.state = {
-      offers: db,
+      offers: [],
       searchByNeighborhood: "",
     };
+
+    
   }
 
 
   componentDidMount(){
-  
 
-    axios.get('/offers')
-        .then(response => console.log(response))
+  this.getAll()
+
+  }
+
+  getAll = async function(e) {
+    await axios.get('/allOffers')
+      .then(response => this.setState({offers: response.data}))
+      .catch(err => console.log(err))
   }
 
   onChangeValueSearch = (e) => {
@@ -34,15 +41,18 @@ class ShowOffers extends Component {
 
   onSearch = (e) => {
     e.preventDefault();
-
-    const currentNeighborhood = db.filter(
+    
+    const currentNeighborhood = this.state.offers.filter(
       (x) =>
         x.neighborhood.toLowerCase() ===
         this.state.searchByNeighborhood.toLowerCase()
     );
 
     if(!this.state.searchByNeighborhood){
-      this.setState({offers: db})
+      // this.setState({offers: this.newDb})
+      axios.get('/allOffers')
+      .then(response => this.setState({offers: response.data}))
+      .catch(err => console.log(err))
       return;
     }
 

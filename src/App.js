@@ -16,13 +16,13 @@ import EditOffer from "./components/EditOffer";
 class App extends React.Component {
   constructor(props) {
     super(props);
-    console.log(this.props);
+    // console.log(this.props);
     this.state = {
       hasSession: false,
     };
   }
 
-  updateSessinStatus = (hasSession) => {
+  updateSessionStatus = (hasSession) => {
     this.setState({ hasSession });
   };
 
@@ -32,7 +32,7 @@ class App extends React.Component {
         style={{ padding: "10px", backgroundColor: "#eaeae1", height: "100vh" }}
       >
         <Header
-          updateSessinStatus={this.updateSessinStatus}
+          updateSessinStatus={this.updateSessionStatus}
           hasSession={this.state.hasSession}
         />
 
@@ -52,7 +52,7 @@ class App extends React.Component {
               return (
                 <LoginForm
                   {...this.props}
-                  updateSessinStatus={this.updateSessinStatus}
+                  updateSessinStatus={this.updateSessionStatus}
                 />
               );
             }}

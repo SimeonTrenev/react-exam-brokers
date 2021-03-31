@@ -1,17 +1,18 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
+
 const Header = (props) => {
   const token = window.sessionStorage.getItem("token");
+  
 
   if (token && !props.hasSession) {
     props.updateSessinStatus(true);
   }
-
+  
   const logout = () => {
     props.updateSessinStatus(false);
     window.sessionStorage.removeItem("token");
-    console.log(props);
   };
 
   return (
@@ -37,17 +38,22 @@ const Header = (props) => {
             Покажи оферти
           </NavLink>
 
-          <NavLink onClick={logout} className="navbar-brand" to="/logout" exact>
+          <NavLink onClick={logout} className="navbar-brand" to="/" exact>
             Logout
           </NavLink>
         </React.Fragment>
       )}
-      <NavLink className="navbar-brand" to="/register" exact>
+      {!props.hasSession && (
+        <React.Fragment>
+        <NavLink className="navbar-brand" to="/register" exact>
         Register
       </NavLink>
       <NavLink className="navbar-brand" to="/login" exact>
         Login
       </NavLink>
+      </React.Fragment>
+      )}
+      
     </nav>
   );
 };

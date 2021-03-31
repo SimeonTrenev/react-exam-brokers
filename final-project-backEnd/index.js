@@ -45,7 +45,7 @@ app.post("/add-offer", (req, res, next) => {
   res.send(req.body);
 });
 
-require("./routes/index")(app);
+// require("./routes/index")(app);
 const port = 9000;
 
 app.listen(port, () => {

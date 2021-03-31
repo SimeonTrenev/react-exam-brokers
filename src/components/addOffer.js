@@ -20,9 +20,10 @@ class AddOffer extends Component {
   };
 
   btnSuccess = (offer) => {
-    axios.post('http://localhost:9000/add-offer', offer)
+    axios.post('/add-offer', offer)
         .then(response => console.log(response.data))
-    
+        .catch(err => console.log(err))
+    this.props.history.push('/show-offers/1')
   }
  
   render() {

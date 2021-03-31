@@ -7,6 +7,7 @@ import axios from 'axios'
 import Pagination from "./tableComponents/Pagination";
 import TableOffers from "./tableComponents/TableOffers";
 import SearchButton from "./SearchButton";
+import Spinner from './sharedComponents/Spinner'
 // import db from "./db/db";
 
 class ShowOffers extends Component {
@@ -14,6 +15,7 @@ class ShowOffers extends Component {
     super(props);
     // console.log(this.props);
     this.state = {
+      loading: true,
       offers: [],
       searchByNeighborhood: "",
     };
@@ -29,9 +31,16 @@ class ShowOffers extends Component {
   }
 
   getAll = async function(e) {
-    await axios.get('/allOffers')
-      .then(response => this.setState({offers: response.data}))
-      .catch(err => console.log(err))
+   
+  await axios.get('/allOffers')
+              .then(response => this.setState({offers: response.data}))
+              .catch(err => console.log(err))
+
+       this.setState({loading: false})
+  }
+
+  componentDidMount(){
+    this.getAll()
   }
 
   onChangeValueSearch = (e) => {
@@ -64,6 +73,11 @@ class ShowOffers extends Component {
   };
 
   render() {
+    if(this.state.loading){
+      return(
+        <Spinner />
+      )
+    }else{
     return (
       <div>
         <SearchButton
@@ -79,6 +93,7 @@ class ShowOffers extends Component {
         <Pagination />
       </div>
     );
+    }
   }
 }
 

@@ -12,7 +12,7 @@ class AddOffer extends Component {
   }
 
   componentDidMount(){
-    console.log('123')
+    // console.log('123')
   }
 
   onChange = (e) => {

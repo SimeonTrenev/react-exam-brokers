@@ -2,14 +2,12 @@ import React, { Component } from "react";
 import Input from "./sharedComponents/Input";
 import TextArea from "./sharedComponents/TextArea";
 
-
 // import moment from 'moment';
 
 class OfferForm extends Component {
   showDeleteBtn() {
     if (this.props.deleteOffer) {
       return (
-        
         <button
           onClick={(e) => {
             e.preventDefault();
@@ -20,7 +18,6 @@ class OfferForm extends Component {
         >
           Изтрий
         </button>
-        
       );
     }
     return null;
@@ -81,6 +78,14 @@ class OfferForm extends Component {
                 val={this.props.offer.floor}
                 changeFn={this.props.changeFn}
               />
+
+              <Input
+                name="phoneNumber"
+                label="Телефон"
+                type="number"
+                val={this.props.offer.phoneNumber}
+                changeFn={this.props.changeFn}
+              />
             </div>
 
             <div className="col-sm-4">
@@ -116,60 +121,49 @@ class OfferForm extends Component {
                 changeFn={this.props.changeFn}
               />
 
-              
-            </div>
-
-            
-
-            <div className="col-sm-4">
-            <Input
-              type="text"
-              label="Вид Строителство"
-              placeholder="Вид Строителсво"
-              name="construction"
-              val={this.props.offer.construction}
-              changeFn={this.props.changeFn}
-            />
-
-            <Input
-              type="text"
-              label="Вид Имот"
-              placeholder="Вид Имот"
-              name="property"
-              val={this.props.offer.property}
-              changeFn={this.props.changeFn}
-            />
-
-            <Input
-              type="text"
-              label="Състояние"
-              placeholder="Състояние"
-              name="state"
-              val={this.props.offer.state}
-              changeFn={this.props.changeFn}
-            />
-
-            <Input
-              type="text"
-              label="Квартал"
-              placeholder="Квартал"
-              name="neighborhood"
-              val={this.props.offer.neighborhood}
-              changeFn={this.props.changeFn}
-            />
-              <Input
-                name="phoneNumber"
-                label="Телефон"
-                type="number"
-                val={this.props.offer.phoneNumber}
-                changeFn={this.props.changeFn}
-              />
-
               <Input
                 name="phoneNumber2"
                 label="Телефон 2"
                 type="number"
                 val={this.props.offer.phoneNumber2}
+                changeFn={this.props.changeFn}
+              />
+            </div>
+
+            <div className="col-sm-4">
+              <Input
+                type="text"
+                label="Вид Строителство"
+                placeholder="Вид Строителсво"
+                name="construction"
+                val={this.props.offer.construction}
+                changeFn={this.props.changeFn}
+              />
+
+              <Input
+                type="text"
+                label="Вид Имот"
+                placeholder="Вид Имот"
+                name="property"
+                val={this.props.offer.property}
+                changeFn={this.props.changeFn}
+              />
+
+              <Input
+                type="text"
+                label="Състояние"
+                placeholder="Състояние"
+                name="state"
+                val={this.props.offer.state}
+                changeFn={this.props.changeFn}
+              />
+
+              <Input
+                type="text"
+                label="Квартал"
+                placeholder="Квартал"
+                name="neighborhood"
+                val={this.props.offer.neighborhood}
                 changeFn={this.props.changeFn}
               />
 

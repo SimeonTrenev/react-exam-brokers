@@ -16,7 +16,7 @@ class SearchButton extends Component {
           changeFn={this.props.onChange}
           
         />
-        <button onClick={this.props.onSearch}>Търси</button>
+        <button onClick={this.props.onSearch} className="btn btn-warning">Търси</button>
       </form>
     );
   }

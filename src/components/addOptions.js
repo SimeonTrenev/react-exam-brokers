@@ -70,7 +70,7 @@ class AddOptions extends  Component {
                     changeFn = {this.onChangeValue}
                     />
                 </form>
-                <button onClick={this.save}>Запази</button>
+                <button onClick={this.save} className="btn btn-success">Запази</button>
             </div>
         )
     }

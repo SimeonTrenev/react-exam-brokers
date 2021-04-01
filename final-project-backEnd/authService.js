@@ -14,9 +14,9 @@ const register = (username, password) => {
 
 const login = async (email, password) => {
     let user = await User.findOne({ email });
-    if (!user) return
+    if (!user) throw new Error('User does not exist!')
     let areEqual = await bcrypt.compare(password, user.password)
-    if (!areEqual) return
+    if (!areEqual) throw new Error('Passwords does not match!')
 
     let token = jwt.sign({ _id: user._id, email: user.email }, SECRET);
 

@@ -19,6 +19,11 @@ function RegistrationForm(props) {
             [id] : value
         }))
     }
+
+    function validateEmail(email) {
+        const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(String(email).toLowerCase());
+    }
     
     const redirectToHome = () => {
         
@@ -29,18 +34,36 @@ function RegistrationForm(props) {
     }
     const handleSubmitClick = (e) => {
         e.preventDefault();
-        if(state.password === state.confirmPassword && state.password.length >= 5) {
+        if(state.password === state.confirmPassword && state.password.length >= 5 && state.email.length >= 5 && validateEmail(state.email)) {
             // sendDetailsToServer()
             axios.post('/register', state)
             .then(response => console.log(response))
             .catch(err => console.log(err))
             redirectToLogin()
         }else{
-            if(state.password.length < 5){
+            if(state.password.length < 5 || state.confirmPassword.length < 5){
                 setErrorMessage('Password is too short!')
+                state.password = ''
+                state.email = ''
+                state.confirmPassword = ''
+            }else if(state.email.length < 5){
+                setErrorMessage('Email is too short!')
+                state.password = ''
+                state.email = ''
+                state.confirmPassword = ''
+            }else if(!validateEmail(state.email)){
+                setErrorMessage('Email or wrong!Try again :)')
+                state.password = ''
+                state.email = ''
+                state.confirmPassword = ''
+            }else{
+                setErrorMessage('Passwords does not match!')
+                state.password = ''
+                state.email = ''
+                state.confirmPassword = ''
             }
-            <InputError>{errorMessage}</InputError>
-            return
+            
+          
         } 
         
     }
@@ -90,6 +113,7 @@ function RegistrationForm(props) {
             <div className="alert alert-success mt-2" style={{display: state.successMessage ? 'block' : 'none' }} role="alert">
                 {state.successMessage}
             </div>
+            <InputError>{errorMessage}</InputError>
             <div className="mt-2">
                 <span>Already have an account? </span>
                 <span className="loginText" onClick={() => redirectToLogin()}>Login here</span> 

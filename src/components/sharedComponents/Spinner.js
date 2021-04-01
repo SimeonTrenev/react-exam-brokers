@@ -1,13 +1,14 @@
 import { useState } from "react";
 import { css } from "@emotion/core";
-import ClipLoader from "react-spinners/ClipLoader";
+import BounceLoader from "react-spinners/BounceLoader";
+
 
 // Can be a string as well. Need to ensure each key-value pair ends with ;
 const override = css`
-  display: block;
-  margin: 0 auto;
-  border-color: blue;
-  size: 15px;
+display: block;
+margin: 0 auto;
+border-color: blue;
+size: 60px;
 `;
 
 function Spinner() {
@@ -23,7 +24,7 @@ function Spinner() {
         placeholder="Color of the loader"
       />
 
-      <ClipLoader color={"#36D7B7"} loading={loading} css={override} size={150} />
+      <BounceLoader color={"#36D7B7"} loading={loading} css={override} size={150} />
     </div>
   );
 }

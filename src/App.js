@@ -27,6 +27,8 @@ class App extends React.Component {
   };
 
   render() {
+    const token = window.sessionStorage.getItem("token");
+    
     return (
       <div
         style={{ padding: "10px", backgroundColor: "#eaeae1", height: "100vh" }}
@@ -41,10 +43,14 @@ class App extends React.Component {
             <HomePage />
           </Route>
           <Route path="/aboutUs" component={AboutUs}></Route>
+          { token && (
+            <React.Fragment>
           <Route path="/add-offer" component={AddOffer} />
           <Route path="/add-options" component={AddOptions} />
           <Route path="/show-offers/:page" component={ShowOffers} />
           <Route path="/offer-details/:_id" component={EditOffer} />
+          </React.Fragment>
+          )}
           <Route path="/register" component={RegisterForm} />
           <Route
             path="/login"

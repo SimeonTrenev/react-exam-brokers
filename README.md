@@ -1,3 +1,6 @@
+Only npm install in React Front-End directory.In Back-End directory node_modules are included.
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

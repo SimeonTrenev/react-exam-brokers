@@ -1,5 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import Greetings from './Greetings'
 
 
 const Header = (props) => {
@@ -41,6 +42,8 @@ const Header = (props) => {
           <NavLink onClick={logout} className="navbar-brand" to="/" exact>
             Logout
           </NavLink>
+          <Greetings token={token}/>
+         
         </React.Fragment>
       )}
       {!props.hasSession && (

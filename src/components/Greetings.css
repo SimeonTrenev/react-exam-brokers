@@ -1,0 +1,6 @@
+.greetings {
+    float: right;
+    padding: 10px;
+    color: blue;
+    justify-content:space-between
+}

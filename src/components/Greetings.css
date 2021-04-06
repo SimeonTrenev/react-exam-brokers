@@ -1,6 +1,6 @@
 .greetings {
-    text-align: right;
-    font-weight: bold;
-    padding-top: 15px;
+    text-align: center;
+    padding: 15px;
     color: blue;
+    font-weight: bold;
 }

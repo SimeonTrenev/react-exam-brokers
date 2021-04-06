@@ -34,7 +34,7 @@ function test(app) {
         //   maxAge: 9000000000,
         //   httpOnly: true,
         // });
-        res.send({"token": token})
+        res.send({"token": token, email})
         // res.append('Set-Cookie', COOKIE_NAME + token + ';');
         // res.json(token);
         // next()

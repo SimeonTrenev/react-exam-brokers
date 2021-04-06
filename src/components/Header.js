@@ -5,6 +5,7 @@ import Greetings from './Greetings'
 
 const Header = (props) => {
   const token = window.sessionStorage.getItem("token");
+  const email = window.sessionStorage.getItem("email")
   
 
   if (token && !props.hasSession) {
@@ -42,7 +43,7 @@ const Header = (props) => {
           <NavLink onClick={logout} className="navbar-brand" to="/" exact>
             Logout
           </NavLink>
-          <Greetings token={token}/>
+          <Greetings email={email}/>
          
         </React.Fragment>
       )}

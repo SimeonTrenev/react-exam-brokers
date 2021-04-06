@@ -42,7 +42,8 @@ function LoginForm(props) {
       axios
         .post("/login", { email, password })
         .then((response) => {
-          window.sessionStorage.setItem("token", response.data.token);
+          window.sessionStorage.setItem("token", response.data.token)
+          window.sessionStorage.setItem("email", response.data.email);
           // console.log(response.data.token);
           props.updateSessinStatus(!!response.data.token);
         })

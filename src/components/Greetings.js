@@ -4,7 +4,7 @@ function Greetings(props) {
     
 return(
     <div className='greetings'>
-        <span>Welcome, {props.email} !</span>
+        <span>Welcome, {props.email}!</span>
     </div>
 )
 }

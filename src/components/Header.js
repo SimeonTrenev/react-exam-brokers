@@ -16,6 +16,8 @@ const Header = (props) => {
   const logout = () => {
     props.updateSessinStatus(false);
     window.sessionStorage.removeItem("token");
+    window.sessionStorage.removeItem("email");
+
   };
 
   return (

@@ -52,7 +52,7 @@ function RegistrationForm(props) {
                 state.email = ''
                 state.confirmPassword = ''
             }else if(!validateEmail(state.email)){
-                setErrorMessage('Email or wrong!Try again :)')
+                setErrorMessage('Email is wrong!Try again :)')
                 state.password = ''
                 state.email = ''
                 state.confirmPassword = ''

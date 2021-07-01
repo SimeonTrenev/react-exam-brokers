@@ -1,3 +1,12 @@
+This application allows users to :
+
+-Register
+
+-Login
+
+-Add, update, delete and search broker offers
+
+
 HOW TO RUN IN LOCAL ENVIRONMENT ?
 
 -Download and install MongoDB Compass

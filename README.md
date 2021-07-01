@@ -1,4 +1,11 @@
-Only npm install in React Front-End directory.In Back-End directory node_modules are included.
+HOW TO RUN IN LOCAL ENVIRONMENT ?
+
+-Download and install MongoDB Compass
+-Navigate to server(Node) directory
+-npm install in React Front-End directory
+-In final-project-backEnd directory node_modules are included.
+-start react App with npm start
+-run the server on back-end side
 
 
 # Getting Started with Create React App

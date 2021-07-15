@@ -1,7 +1,7 @@
 
 const express = require("express");
 const mongoose = require("mongoose");
-const mongoPath ="mongodb://localhost:27017/finalExam";
+const mongoPath ="mongodb+srv://admin:12345@myfirstcluster.zbh03.mongodb.net/myFirstCluster?retryWrites=true&w=majority";
 const bodyParser = require("body-parser");
 const cors = require("cors");
 require("./models/Offers");

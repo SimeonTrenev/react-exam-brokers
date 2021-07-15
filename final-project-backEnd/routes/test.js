@@ -76,6 +76,10 @@ function test(app) {
                 .then(response => res.send(response))
   })
 
+  app.get('/', (req, res, next) => {
+    res.send('Hello my friends!')
+  })
+
   app.get('/clearCookie', (req, res, next) => {
       res.clearCookie(COOKIE_NAME)
       next();

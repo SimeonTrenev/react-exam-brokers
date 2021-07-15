@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const dbUrl = 'mongodb:///127.0.0.1:27017/finalExam'
+const dbUrl = 'mongodb://localhost:27017/finalExam'
 const dbConnectionString = dbUrl
 
 mongoose.Promise = global.Promise;

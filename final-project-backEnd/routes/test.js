@@ -8,6 +8,11 @@ const {  COOKIE_NAME } = require("../config");
 const authService = require("../authService");
 
 function test(app) {
+  app.post('/', (req, res, next) => {
+    res.send('Hello')
+  })
+
+
     app.post("/add-types", (req, res, next) => {
         constructionTypes.create(req.body, (err, types) => {
           console.log(types);

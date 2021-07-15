@@ -2,7 +2,6 @@
   "name": "react-exam-brokers",
   "version": "0.1.0",
   "private": true,
-  "proxy": "https://lc-brokers.herokuapp.com/",
   "dependencies": {
     "@react-firebase/auth": "^0.2.10",
     "@testing-library/jest-dom": "^5.11.4",

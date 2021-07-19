@@ -1,6 +1,6 @@
 <h1>Brokers - live demo : https://front-end-brokers.herokuapp.com/ </h1>
 
-Tech stack:
+<h2>Tech stack:</h2>
 <img src="https://i.ibb.co/4JKj4t6/mern-stack.png" alt="mern-stack"/>
 
 This application allows users to :

@@ -1,4 +1,4 @@
-<h1>Brokers - live demo : [front-end-brokers.herokuapp.com] (https://front-end-brokers.herokuapp.com/)/</h1>
+<h1>Brokers - live demo : front-end-brokers.herokuapp.com /</h1>
 
 
 
